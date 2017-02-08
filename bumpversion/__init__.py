@@ -360,8 +360,8 @@ class VersionConfig(object):
             part_configs = {}
 
         self.part_configs = part_configs
-        self.search = search
-        self.replace = replace
+        self.search = search.replace('\#', '#')
+        self.replace = replace.replace('\#', '#')
 
     def _labels_for_format(self, serialize_format):
         return (
