@@ -1,6 +1,8 @@
 import re
 from setuptools import setup
 
+import bumpversion
+
 description = 'Version-bump your software with a single command!'
 
 long_description = re.sub(
@@ -11,7 +13,7 @@ long_description = re.sub(
 
 setup(
     name='bumpversion',
-    version='0.5.4-dev',
+    version=bumpversion.__VERSION__,
     url='https://github.com/peritus/bumpversion',
     author='Filip Noetzel',
     author_email='filip+bumpversion@j03.de',
