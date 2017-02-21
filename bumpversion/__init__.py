@@ -33,7 +33,7 @@ from bumpversion.version_part import VersionPart, NumericVersionPartConfiguratio
 if sys.version_info[0] == 2:
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 
-__VERSION__ = '0.5.4-dev'
+__VERSION__ = '0.5.4-lbry'
 
 DESCRIPTION = 'bumpversion: v{} (using Python v{})'.format(
     __VERSION__,
@@ -532,6 +532,11 @@ def main(original_args=None):
         warnings.warn("Giving multiple files on the command line will be deprecated, please use [bumpversion:file:...] in a config file.", PendingDeprecationWarning)
 
     parser1 = argparse.ArgumentParser(add_help=False)
+
+    parser1.add_argument(
+        '-v', dest='print_version', action="version",
+        version='%(prog)s {}'.format(__VERSION__),
+        help="output bumpversion version")
 
     parser1.add_argument(
         '--config-file', metavar='FILE',
