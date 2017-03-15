@@ -326,7 +326,7 @@ class Version(object):
         new_values = {}
 
         for label in order:
-            if not label in self._values:
+            if label not in self._values:
                 continue
             elif label == part_name:
                 new_values[label] = self._values[label].bump()
@@ -660,11 +660,11 @@ def main(original_args=None):
 
             if section_prefix == "part":
 
-                ThisVersionPartConfiguration = NumericVersionPartConfiguration
-
                 if 'values' in section_config:
                     section_config['values'] = list(filter(None, (x.strip() for x in section_config['values'].splitlines())))
                     ThisVersionPartConfiguration = ConfiguredVersionPartConfiguration
+                else:
+                    ThisVersionPartConfiguration = NumericVersionPartConfiguration
 
                 part_configs[section_value] = ThisVersionPartConfiguration(**section_config)
 
